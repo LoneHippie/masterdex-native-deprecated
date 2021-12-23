@@ -1,6 +1,8 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, StatusBar } from 'react-native';
 
+import { colors } from '../styles/theme';
+
 const Layout = ({ children }) => {
 
     return (
@@ -17,7 +19,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'column',
 		flex: 1,
-        backgroundColor: '#EEEEEE',
-		paddingTop: StatusBar.currentHeight
+        backgroundColor: colors.white,
+		paddingTop: StatusBar.currentHeight,
+        color: colors.text
     }
 });

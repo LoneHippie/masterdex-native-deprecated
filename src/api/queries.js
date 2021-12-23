@@ -2,7 +2,7 @@ import { queryOptions, handleQuery } from "./queryHandlers";
 
 const url = 'https://beta.pokeapi.co/graphql/v1beta';
 
-//data query for standard pokemon info such as states, name, sprite id, abilities, types, etc
+//data query for standard pokemon info such as stats, name, sprite id, abilities, types, etc
 const pokemonBody = `
     base_experience
     height
@@ -36,7 +36,7 @@ const pokemonBody = `
 
 export function singlePokemonQuery(name) {
     const searchQuery = `query {
-        pokemon: pokemon_v2_pokemon(where: {name: {_iregex: ${name}}}) {
+        pokemon: pokemon_v2_pokemon(where: {name: {_iregex: ${name}}, pokemon_v2_pokemonforms: {form_name: {_eq: ""}}}) {
             ${pokemonBody}
         }
     }`;
