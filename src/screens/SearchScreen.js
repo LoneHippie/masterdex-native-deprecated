@@ -1,12 +1,16 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
+import Layout from '../Layouts/Layout';
+
 const SearchScreen = () => {
 
     return (
-        <View>
-            <Text>Search</Text>
-        </View>
+        <Layout>
+            <View>
+                <Text>Search</Text>
+            </View>
+        </Layout>
     )
 };
 
