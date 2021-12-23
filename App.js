@@ -1,20 +1,36 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Masterdex Native</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+import SearchScreen from './src/screens/SearchScreen';
+import TeamScreen from './src/screens/TeamScreen';
+import PokemonScreen from './src/screens/PokemonScreen';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const App = () => {
+
+	const Stack = createNativeStackNavigator();
+
+  	return (
+    	<NavigationContainer>
+			<Stack.Navigator>
+				<Stack.Screen 
+					name="Search"
+					component={ SearchScreen }
+					options={{ title: 'Search' }}
+				/>
+				<Stack.Screen 
+					name="Team"
+					component={ TeamScreen }
+					options={{ title: 'My Teams' }}
+				/>
+				<Stack.Screen 
+					name="Pokemon"
+					component={ PokemonScreen }
+					options={({ route }) => ({ title: `${route.params.pokemon.name}` })}
+				/>
+			</Stack.Navigator>
+		</NavigationContainer>
+  	)
+};
+
+export default App;
