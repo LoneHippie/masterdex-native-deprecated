@@ -4,12 +4,16 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import PokemonScreenTabInfo from './PokemonScreenTabInfo';
 import PokemonScreenTabMoves from './PokemonScreenTabMoves';
 
+import HeaderBar from '../components/HeaderBar';
+
 const PokemonScreen = () => {
 
     const Tab = createBottomTabNavigator();
 
     return (
-        <Tab.Navigator>
+        <Tab.Navigator
+            initialRouteName="Info"
+        >
             <Tab.Screen 
                 name="Info"
                 component={ PokemonScreenTabInfo }
@@ -21,5 +25,9 @@ const PokemonScreen = () => {
         </Tab.Navigator>
     )
 };
+
+PokemonScreen.navigationOptions = ({ navigation }) => {
+    header: <HeaderBar />
+}
 
 export default PokemonScreen;

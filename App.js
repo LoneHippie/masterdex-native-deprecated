@@ -6,6 +6,8 @@ import SearchScreen from './src/screens/SearchScreen';
 import TeamScreen from './src/screens/TeamScreen';
 import PokemonScreen from './src/screens/PokemonScreen';
 
+import HeaderBar from './src/components/HeaderBar';
+
 const App = () => {
 
 	const Stack = createNativeStackNavigator();
@@ -13,10 +15,12 @@ const App = () => {
   	return (
     	<NavigationContainer>
 			<Stack.Navigator>
-				<Stack.Screen 
+				<Stack.Screen
 					name="Search"
 					component={ SearchScreen }
-					options={{ title: 'Search' }}
+					options={{ 
+						headerTitle: (props) => <HeaderBar {...props} /> 
+					}}
 				/>
 				<Stack.Screen 
 					name="Team"
