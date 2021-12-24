@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 
 import { useDispatch } from 'react-redux';
-import { updateResults } from '../store/slices';
-
-import { singlePokemonQuery } from '../api/queries';
+import { updateFromQuery } from '../store/slices';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -19,10 +17,13 @@ const HeaderBar = (props) => {
     const formHandlers = {
         handleUpdateSearch: () => {
             if (!search.length) { return }
-            singlePokemonQuery(search)
-                .then(data => {
-                    dispatch(updateResults(data))
+            
+            dispatch(
+                updateFromQuery({
+                    query: search, 
+                    queryType: 'search'
                 })
+            )
         }
     }
 
